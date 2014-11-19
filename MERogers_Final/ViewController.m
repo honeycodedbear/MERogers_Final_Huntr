@@ -9,10 +9,104 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
+
+-(IBAction)login:(id)sender{    
+    NSLog(@"%@ : %@", _email.text, _password.text );
+    
+    NSDictionary *parameters = @{@"email": _email.text, @"password": _password.text};
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://localhost:9292/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *json = (NSDictionary *) responseObject;
+        NSLog(@"Message: %@", json[@"message"]);
+        if([json[@"message"] isEqualToString:@"Success"]){
+            ProfileViewController *profileController = (ProfileViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+            [self presentViewController:profileController animated:YES completion:nil];
+        }else{
+            NSLog(@"Failure to login");
+            _errorLabel.text = @"Failure. Please check your email/password";
+        }        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+-(IBAction)signup:(id)sender{
+    
+    // Check to see if it's NOT blank
+    if(![_email.text isEqualToString:@""] && ![_password.text isEqualToString:@""] ) {
+        NSLog(@"%@ : %@", _email.text, _password.text );
+        
+        NSDictionary *parameters = @{@"email": _email.text, @"password": _password.text};
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:@"http://localhost:9292/signup" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *json = (NSDictionary *) responseObject;
+            NSLog(@"Message: %@", json[@"message"]);
+            if([json[@"message"] isEqualToString:@"Success"]){
+                ProfileViewController *profileController = (ProfileViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+                [self presentViewController:profileController animated:YES completion:nil];
+            }else{
+                NSLog(@"Failure to login");
+                _errorLabel.text = @"Failure. Email is already registered";
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    }else{
+        _errorLabel.text = @"Please fill out the form";
+    }
+}
+
+/*
+
+- (void)load
+{
+    //Build URL
+    NSURL *myURL = [NSURL URLWithString:@"http://localhost:4567/"];
+    //Build Request
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+    //Set HTTPMethod
+    [request setHTTPMethod:@"POST"];
+    //Build the Parameters
+    NSString * parameters = [NSString stringWithFormat:@"email=%@&password=%@",_email.text,_password.text];
+    NSData *requestData = [NSData dataWithBytes:[parameters UTF8String] length:[parameters length]];
+    //Add Parameters to Request
+    [request setHTTPBody:requestData];
+    //Send Request
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    _responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    _responseData = nil;
+    connection = nil;
+    //[textView setString:@"Unable to fetch data"];
+    NSLog(@"Unable to fetch data");
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    //NSLog(@"Success! Received %lu bytes of data",(unsigned long)[_responseData length]);
+    NSString *txt = [[NSString alloc] initWithData:_responseData encoding: NSASCIIStringEncoding];
+    NSLog(@"%@",txt);
+}
+
+
+*/
+
+//Old Stuff
 
 - (void)viewDidLoad {
     [super viewDidLoad];
