@@ -232,14 +232,14 @@
                                     <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 </variation>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNR-JR-tb5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZT5-58-HDz">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="250" width="375" height="144"/>
                                 </variation>
                             </textView>
                         </subviews>
@@ -251,7 +251,7 @@
                                 <exclude reference="pfz-FY-oD8"/>
                                 <exclude reference="Ep3-UO-84u"/>
                                 <exclude reference="cya-uJ-fWF"/>
-                                <exclude reference="qNR-JR-tb5"/>
+                                <exclude reference="ZT5-58-HDz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -261,7 +261,7 @@
                                 <include reference="pfz-FY-oD8"/>
                                 <include reference="Ep3-UO-84u"/>
                                 <include reference="cya-uJ-fWF"/>
-                                <include reference="qNR-JR-tb5"/>
+                                <include reference="ZT5-58-HDz"/>
                             </mask>
                         </variation>
                     </view>

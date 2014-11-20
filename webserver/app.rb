@@ -20,6 +20,28 @@ post '/' do
   { message: "Success" }.to_json
 end
 
+post '/swipe' do
+  user_a = params[:user_a]
+  user_b = params[:user_b]
+  #create a like following for user_a to user_b
+  #if params[:direction] == 'right'
+  #then make it a like
+  #else make it a dislike
+  content_type :json
+  { message: "Success" }.to_json
+end
+
+get '/random_user' do
+  content_type :json
+  user = User.find(params[:user_id])
+  #check if user is user's ownself. if so find another one
+  #also add gender
+  do
+    target = User.where("isEmployer = ?",!params[:isEmployer]).sample(1) #we pick one of the random wanted users
+  while target.liked_by.where("userB_id = ?",params[:user_id]).count > 0 && target.likes.where("userA_id = ?",params[:user_id]).count > 0
+  target.to_json
+end
+
 get '/signup' do
   content_type :json
   puts params.inspect

@@ -47,6 +47,22 @@
     }
 }
 
+-(void)getRandomUserData{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://localhost:9292/random_user" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *json = (NSDictionary *) responseObject;
+        NSLog(@"Message: %@", json[@"message"]);
+        if([json[@"message"] isEqualToString:@"Success"]){
+            NSLog(@"Success");
+        }else{
+            NSLog(@"Failure to login");
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+}
+
 -(void)approveSwipe{
     NSLog(@"Swipe Right");
 }

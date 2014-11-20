@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119015343) do
+ActiveRecord::Schema.define(version: 20141119171717) do
+
+  create_table "likes", force: true do |t|
+    t.integer "userA_id"
+    t.integer "userB_id"
+    t.boolean "likes?"
+  end
 
   create_table "users", force: true do |t|
     t.string "email"
