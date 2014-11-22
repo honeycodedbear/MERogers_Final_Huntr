@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking/AFNetworking.h"
+#import "UIKit+AFNetworking/UIKit+AFNetworking.h"
 #import "Classes/JSONAPI.h"
 #import "ProfileViewController.h"
 

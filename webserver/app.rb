@@ -33,13 +33,55 @@ end
 
 get '/random_user' do
   content_type :json
+  puts params.inspect
+  #{ message: "Failure" }.to_json
+  User.where("id != ?",params[:user_id]).sample(1).first.to_json
+end
+
+get '/user' do
+  content_type :json
+  return User.find(params[:user_id]).to_json unless params[:user_id].nil?
+  { message: "Failure" }.to_json
+end
+
+post '/update_user' do
+  content_type :json
+  puts params.inspect
   user = User.find(params[:user_id])
-  #check if user is user's ownself. if so find another one
-  #also add gender
-  do
-    target = User.where("isEmployer = ?",!params[:isEmployer]).sample(1) #we pick one of the random wanted users
-  while target.liked_by.where("userB_id = ?",params[:user_id]).count > 0 && target.likes.where("userA_id = ?",params[:user_id]).count > 0
-  target.to_json
+  user.name = params[:name]
+  user.dev_type = params[:dev_type]
+  user.location = params[:location]
+  user.blurb = params[:blurb]
+  user.skill1 = params[:skill1]
+  user.skill2 = params[:skill2]
+  user.skill3 = params[:skill3]
+  user.skill4 = params[:skill4]
+  user.skill5 = params[:skill5]
+  user.skill6 = params[:skill6]
+  user.github = params[:github]
+  user.personal = params[:personal]
+  user.employer = params[:employer]
+  user.save
+  { message: "Success" }.to_json
+end
+
+get '/get_image' do
+  content_type 'image/png'
+  File.open("./public/profile_image_#{params[:user_id]}.png").read
+end
+
+post '/save_image' do
+  content_type :json
+  #puts params.inspect
+  #@filename = params[:file][:filename]
+  File.open("./public/profile_image_#{params[:user_id]}.png", 'wb') do |f|
+    f.write(params[:image])
+  end
+  user = User.find(params[:user_id])
+  user.profile_img = "has one"
+  user.save
+  #erb :show_image
+  return { message: "Success" }.to_json
 end
 
 get '/signup' do
@@ -48,15 +90,15 @@ get '/signup' do
   if @user = User.find_by(email:  params[:email])
     { message: "Failure" }.to_json
   else
-    { message: "Success" }.to_json
+    { message: "Success", user_id: @user.id.to_s }.to_json
   end
 end
 
 get '/login' do
   content_type :json
   puts params.inspect
-  if @user = User.find_by(email:  params[:email]).try(:authenticate, params[:password])
-    { message: "Success" }.to_json
+  if(@user = User.find_by(email:  params[:email]).try(:authenticate, params[:password]))
+    { message: "Success", user_id: @user.id.to_s }.to_json
   else
     { message: "Failure" }.to_json
   end

@@ -22,6 +22,19 @@
         NSDictionary *json = (NSDictionary *) responseObject;
         NSLog(@"Message: %@", json[@"message"]);
         if([json[@"message"] isEqualToString:@"Success"]){
+            NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
+            NSString* loggedInUserIdKey = @"loggedInUserId";
+            const NSInteger loggedInUserId =  [json[@"user_id"] integerValue];
+            [preferences setInteger:loggedInUserId forKey:loggedInUserIdKey];
+            //  Save to disk
+            const BOOL didSave = [preferences synchronize];
+            
+            if(!didSave)
+            {
+                //  Couldn't save (I've never seen this happen in real world testing)
+                NSLog(@"Couldn't save user_id");
+            }
+            
             ProfileViewController *profileController = (ProfileViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
             [self presentViewController:profileController animated:YES completion:nil];
         }else{
@@ -45,6 +58,18 @@
             NSDictionary *json = (NSDictionary *) responseObject;
             NSLog(@"Message: %@", json[@"message"]);
             if([json[@"message"] isEqualToString:@"Success"]){
+                NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
+                NSString* loggedInUserIdKey = @"loggedInUserId";
+                const NSInteger loggedInUserId =  [json[@"user_id"] integerValue];
+                [preferences setInteger:loggedInUserId forKey:loggedInUserIdKey];
+                //  Save to disk
+                const BOOL didSave = [preferences synchronize];
+                
+                if(!didSave)
+                {
+                    //  Couldn't save (I've never seen this happen in real world testing)
+                    NSLog(@"Couldn't save user_id");
+                }
                 ProfileViewController *profileController = (ProfileViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
                 [self presentViewController:profileController animated:YES completion:nil];
             }else{
@@ -110,6 +135,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
+    NSString* loggedInUserIdKey = @"loggedInUserId";
+    /*
+    if([preferences objectForKey:loggedInUserIdKey] != nil)
+    {
+        //move onto profile page
+        ProfileViewController *profileController = (ProfileViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+        [self presentViewController:profileController animated:YES completion:nil];
+    }
+     */
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
