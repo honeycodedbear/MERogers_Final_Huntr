@@ -12,11 +12,77 @@
 
 @end
 
-@implementation InboxViewController
+@implementation InboxViewController{
+    NSArray *recipes;
+}
+
+-(IBAction)backToProfile:(id)sender{
+    ProfileViewController *viewController = (ProfileViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+// UITable Stuff
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [recipes count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"SimpleTableCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    cell.textLabel.text = [recipes objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:@"creme_brelee.jpg"];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIAlertView *messageAlert = [[UIAlertView alloc]
+                                 initWithTitle:@"Row Selected" message:@"You've selected a row" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display Alert Message
+    [messageAlert show];
+    
+}
+
+//ServerQueryStuff
+-(NSArray *)getConversations{
+    NSArray *results;
+    
+    NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
+    NSString* loggedInUserIdKey = @"loggedInUserId";
+    if([preferences objectForKey:loggedInUserIdKey] != nil)
+    {
+        //move onto profile page
+        NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:@"http://localhost:9292/conversations" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *json = (NSDictionary *) responseObject;
+            NSLog(@"Message: %@", json);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+        
+    }
+    return results;
+}
+
+//Default Stuff
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    recipes = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+
 }
 
 - (void)didReceiveMemoryWarning {

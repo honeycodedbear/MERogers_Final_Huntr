@@ -15,6 +15,7 @@
 		AF2879641A2152A400548C1F /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = AF28795A1A2152A400548C1F /* UIProgressView+AFNetworking.m */; };
 		AF2879651A2152A400548C1F /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = AF28795C1A2152A400548C1F /* UIRefreshControl+AFNetworking.m */; };
 		AF2879661A2152A400548C1F /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = AF28795E1A2152A400548C1F /* UIWebView+AFNetworking.m */; };
+		AFA6B0791A291ECA00026610 /* creme_brelee.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFA6B0781A291EC900026610 /* creme_brelee.jpg */; };
 		AFACFB001A1BAEB50006405D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFACFAFF1A1BAEB50006405D /* main.m */; };
 		AFACFB031A1BAEB50006405D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFACFB021A1BAEB50006405D /* AppDelegate.m */; };
 		AFACFB061A1BAEB50006405D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFACFB051A1BAEB50006405D /* ViewController.m */; };
@@ -70,6 +71,7 @@
 		AF28795C1A2152A400548C1F /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		AF28795D1A2152A400548C1F /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		AF28795E1A2152A400548C1F /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		AFA6B0781A291EC900026610 /* creme_brelee.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = creme_brelee.jpg; sourceTree = "<group>"; };
 		AFACFAFA1A1BAEB50006405D /* MERogers_Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MERogers_Final.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFACFAFE1A1BAEB50006405D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFACFAFF1A1BAEB50006405D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		AFACFAFC1A1BAEB50006405D /* MERogers_Final */ = {
 			isa = PBXGroup;
 			children = (
+				AFA6B0781A291EC900026610 /* creme_brelee.jpg */,
 				AF28794D1A2152A400548C1F /* UIKit+AFNetworking */,
 				AFACFB401A1BC38E0006405D /* Classes */,
 				AFACFB231A1BC37E0006405D /* AFNetworking */,
@@ -358,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFACFB091A1BAEB50006405D /* Main.storyboard in Resources */,
+				AFA6B0791A291ECA00026610 /* creme_brelee.jpg in Resources */,
 				AFACFB0E1A1BAEB50006405D /* LaunchScreen.xib in Resources */,
 				AFACFB0B1A1BAEB50006405D /* Images.xcassets in Resources */,
 			);

@@ -20,6 +20,10 @@ post '/' do
   { message: "Success" }.to_json
 end
 
+get '/conversations' do
+
+end
+
 post '/swipe' do
   user_a = params[:user_a]
   user_b = params[:user_b]

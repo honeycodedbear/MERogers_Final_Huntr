@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileViewController.h"
 
-@interface InboxViewController : UIViewController
-
+@interface InboxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+-(IBAction)backToProfile:(id)sender;
 @end

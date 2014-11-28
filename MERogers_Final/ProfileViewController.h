@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserViewController.h"
 #import "ViewController.h"
+#import "InboxViewController.h"
 
 @interface ProfileViewController : UIViewController
 @property IBOutlet UILabel *profileLabel;
@@ -29,5 +30,6 @@
 @property IBOutlet UITableView *skillsTable;
 -(void)profilePicBrowser;
 -(IBAction)goHunting:(id)sender;
+-(IBAction)goInbox:(id)sender;
 -(IBAction)updateToServer:(id)sender;
 @end

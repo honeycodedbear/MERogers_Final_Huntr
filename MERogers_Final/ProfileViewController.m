@@ -14,6 +14,11 @@
 
 @implementation ProfileViewController
 
+-(IBAction)goInbox:(id)sender{
+    InboxViewController *viewController = (InboxViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"InboxViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 -(void)profilePicBrowser{
     NSLog(@"Change Pic");
     /*

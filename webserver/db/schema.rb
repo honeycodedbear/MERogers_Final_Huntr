@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122225818) do
+ActiveRecord::Schema.define(version: 20141128221120) do
 
   create_table "likes", force: true do |t|
     t.integer "userA"
     t.integer "userB"
     t.boolean "likes?"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer "sending_user_id"
+    t.integer "receiving_user_id"
+    t.string  "data"
   end
 
   create_table "users", force: true do |t|
