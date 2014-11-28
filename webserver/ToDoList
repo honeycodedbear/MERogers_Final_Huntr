@@ -2,8 +2,8 @@ ToDoList:
 
 Users can Sign up - DONE
 Users can Sign in - DONE
-User can edit their profile
-Users profiles sync with database
-Users can swipe left/right
+User can edit their profile -- DONE
+Users profiles sync with database -- DONE
+Users can swipe left/right -- DONE
 Users can exchange messages
-Users can upload images
+Users can upload images -- DONE

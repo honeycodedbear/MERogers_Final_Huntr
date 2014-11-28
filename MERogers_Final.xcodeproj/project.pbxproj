@@ -38,6 +38,8 @@
 		AFACFB4F1A1BC38E0006405D /* JSONAPIResourceModeler.m in Sources */ = {isa = PBXBuildFile; fileRef = AFACFB4A1A1BC38E0006405D /* JSONAPIResourceModeler.m */; };
 		AFACFB521A1C17160006405D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFACFB511A1C17160006405D /* ProfileViewController.m */; };
 		AFACFB551A1C1ABE0006405D /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFACFB541A1C1ABE0006405D /* UserViewController.m */; };
+		AFEC71241A23D96700E1F46C /* InboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEC71231A23D96700E1F46C /* InboxViewController.m */; };
+		AFEC71271A23D98700E1F46C /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEC71261A23D98700E1F46C /* ConversationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,10 @@
 		AFACFB511A1C17160006405D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		AFACFB531A1C1ABE0006405D /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		AFACFB541A1C1ABE0006405D /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
+		AFEC71221A23D96700E1F46C /* InboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxViewController.h; sourceTree = "<group>"; };
+		AFEC71231A23D96700E1F46C /* InboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxViewController.m; sourceTree = "<group>"; };
+		AFEC71251A23D98700E1F46C /* ConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationViewController.h; sourceTree = "<group>"; };
+		AFEC71261A23D98700E1F46C /* ConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,10 @@
 				AFACFB041A1BAEB50006405D /* ViewController.h */,
 				AFACFB051A1BAEB50006405D /* ViewController.m */,
 				AFACFB071A1BAEB50006405D /* Main.storyboard */,
+				AFEC71251A23D98700E1F46C /* ConversationViewController.h */,
+				AFEC71261A23D98700E1F46C /* ConversationViewController.m */,
+				AFEC71221A23D96700E1F46C /* InboxViewController.h */,
+				AFEC71231A23D96700E1F46C /* InboxViewController.m */,
 				AFACFB531A1C1ABE0006405D /* UserViewController.h */,
 				AFACFB541A1C1ABE0006405D /* UserViewController.m */,
 				AFACFB501A1C17160006405D /* ProfileViewController.h */,
@@ -388,12 +398,14 @@
 				AFACFB4F1A1BC38E0006405D /* JSONAPIResourceModeler.m in Sources */,
 				AFACFB4C1A1BC38E0006405D /* JSONAPIResource.m in Sources */,
 				AFACFB391A1BC37E0006405D /* AFHTTPSessionManager.m in Sources */,
+				AFEC71271A23D98700E1F46C /* ConversationViewController.m in Sources */,
 				AF2879651A2152A400548C1F /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF2879631A2152A400548C1F /* UIImageView+AFNetworking.m in Sources */,
 				AFACFB3D1A1BC37E0006405D /* AFURLRequestSerialization.m in Sources */,
 				AFACFB3F1A1BC37E0006405D /* AFURLSessionManager.m in Sources */,
 				AFACFB031A1BAEB50006405D /* AppDelegate.m in Sources */,
 				AFACFB001A1BAEB50006405D /* main.m in Sources */,
+				AFEC71241A23D96700E1F46C /* InboxViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

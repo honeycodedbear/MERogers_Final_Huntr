@@ -101,6 +101,11 @@
                 _employerLabel.text = @"Job Seeker";
             }
         }
+        if(![[json objectForKey:@"profile_img"] isKindOfClass:[NSNull class]]){
+            NSLog(@"RETRIEVE IMAGE");
+            NSString *urlString = [NSString stringWithFormat:@"http://localhost:9292/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
+            [_profileImage setImageWithURL:[NSURL URLWithString:urlString]];
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
