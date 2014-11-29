@@ -64,9 +64,10 @@
         //move onto profile page
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://localhost:9292/conversations" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://localhost:9292/inbox_users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *json = (NSDictionary *) responseObject;
             NSLog(@"Message: %@", json);
+            NSLog(@"Raw: %@",responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
@@ -82,6 +83,8 @@
     // Do any additional setup after loading the view.
 
     recipes = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    
+    [self getConversations];
 
 }
 

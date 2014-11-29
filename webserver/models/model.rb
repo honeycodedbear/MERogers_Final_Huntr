@@ -18,10 +18,10 @@ class User < ActiveRecord::Base
     (sent_messages+recieved_messages).to_json
   end
 
-  def self.getConversations(userA: nil)
+  def self.getInboxUsers(userA: nil)
     user_ids = []
-    user_ids += userA.sent_messages.collect {|m| m.receiving_user.id}
-    user_ids += userA.recieved_messages.collect {|m| m.sending_user.id}
+    user_ids += userA.sent_messages.collect {|m| [m.receiving_user.id, m.receiving_user.name]}
+    user_ids += userA.recieved_messages.collect {|m| [m.sending_user.id, m.sending_user.name]}
     user_ids.uniq.to_json
   end
 end

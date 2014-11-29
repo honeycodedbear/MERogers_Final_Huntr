@@ -20,9 +20,13 @@ post '/' do
   { message: "Success" }.to_json
 end
 
-get '/conversations' do
-
+get '/inbox_users' do
+  content_type :json
+  user_ids = User.getInboxUsers userA: User.find(params[:user_id])
+  user_ids
 end
+
+
 
 post '/swipe' do
   user_a = params[:user_a]
