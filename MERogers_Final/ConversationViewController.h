@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConversationViewController : UIViewController
-
+@interface ConversationViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property long user_id;
+@property NSString *otherName;
+@property NSMutableArray *messages;
+@property IBOutlet UITableView *messageTable;
+@property IBOutlet UIButton *sendBtn;
+@property IBOutlet UITextField *messageField;
+-(IBAction)sendMessage:(id)sender;
 @end

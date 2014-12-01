@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'json'
+require 'rmagick'
+require 'httparty'
+
 Dir["./models/*.rb"].each { |file| require file }
 
 require './config/environments' #database configuration
@@ -26,7 +29,21 @@ get '/inbox_users' do
   user_ids
 end
 
+get '/user_name' do
+  content_type :json
+  {name: User.find(params[:user_id]).name }.to_json
+end
 
+get '/conversation' do
+  content_type :json
+  User.getConversation userA:User.find(params[:user_id]), userB:User.find(params[:other_id])
+end
+
+post '/send_message' do
+  content_type :json
+  Message.create sending_user_id: params[:user_id], receiving_user_id: params[:other_id], data: params[:data]
+  {message: "Success"}.to_json
+end
 
 post '/swipe' do
   user_a = params[:user_a]
@@ -78,6 +95,11 @@ get '/get_image' do
   File.open("./public/profile_image_#{params[:user_id]}.png").read
 end
 
+get '/get_image_thumb' do
+  content_type 'image/png'
+  File.open("./public/profile_image_#{params[:user_id]}_thumb.png").read
+end
+
 post '/save_image' do
   content_type :json
   #puts params.inspect
@@ -85,6 +107,9 @@ post '/save_image' do
   File.open("./public/profile_image_#{params[:user_id]}.png", 'wb') do |f|
     f.write(params[:image])
   end
+  #resize image
+  Magick::Image::read("./public/profile_image_#{params[:user_id]}.png").first.scale(100,100).write "./public/profile_image_#{params[:user_id]}_thumb.png"
+  #update user
   user = User.find(params[:user_id])
   user.profile_img = "has one"
   user.save

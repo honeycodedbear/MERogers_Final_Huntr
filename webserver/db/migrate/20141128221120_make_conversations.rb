@@ -4,6 +4,7 @@ class MakeConversations < ActiveRecord::Migration
       t.integer :sending_user_id
       t.integer :receiving_user_id
       t.string :data
+      t.timestamps
     end
   end
 end

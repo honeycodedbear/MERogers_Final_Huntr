@@ -7,6 +7,7 @@
 //
 
 #import "InboxViewController.h"
+#import "ConversationViewController.h"
 
 @interface InboxViewController ()
 
@@ -14,6 +15,9 @@
 
 @implementation InboxViewController{
     NSArray *recipes;
+    NSArray *results;
+    NSMutableArray *user_names;
+    NSMutableArray *user_ids;
 }
 
 -(IBAction)backToProfile:(id)sender{
@@ -24,7 +28,8 @@
 // UITable Stuff
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [recipes count];
+    NSLog(@"UserNames.Count: %lu", (unsigned long)[user_names count]);
+    return [user_names count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -37,8 +42,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.textLabel.text = [recipes objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"creme_brelee.jpg"];
+    cell.textLabel.text = [user_names objectAtIndex:indexPath.row];
+    NSString *urlString = [NSString stringWithFormat:@"http://localhost:9292/get_image?user_id=%@", [user_ids objectAtIndex:indexPath.row] ] ;
+    
+    [cell.imageView setImageWithURL:[NSURL URLWithString:urlString]];
+    //cell.imageView.image = [UIImage imageNamed:@"creme_brelee.jpg"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -49,14 +58,22 @@
                                  initWithTitle:@"Row Selected" message:@"You've selected a row" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
     // Display Alert Message
-    [messageAlert show];
+    //[messageAlert show];
     
+    //identify which row this is
+    //get that user id
+    //[user_ids objectAtIndex:indexPath.row];
+    
+    //open the conversation controller and pass that number over to it
+    
+    ConversationViewController *viewController = (ConversationViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ConversationViewController"];
+    viewController.user_id = [[user_ids objectAtIndex:indexPath.row] integerValue];
+    viewController.otherName = [user_names objectAtIndex:indexPath.row];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 //ServerQueryStuff
 -(NSArray *)getConversations{
-    NSArray *results;
-    
     NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
     NSString* loggedInUserIdKey = @"loggedInUserId";
     if([preferences objectForKey:loggedInUserIdKey] != nil)
@@ -65,9 +82,17 @@
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         [manager GET:@"http://localhost:9292/inbox_users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSDictionary *json = (NSDictionary *) responseObject;
-            NSLog(@"Message: %@", json);
-            NSLog(@"Raw: %@",responseObject);
+            //NSLog(@"Raw: %@", responseObject);
+           // NSDictionary *json = (NSDictionary *) responseObject;
+           // NSLog(@"Json: %@", json);
+            results = (NSArray *) responseObject;
+            //NSLog(@"LOAD ALL THE THINGS");
+            for (NSArray *entry in results){
+                [user_names addObject: [entry objectAtIndex: 1]];
+                [user_ids addObject: [entry objectAtIndex: 0]];
+                //NSLog(@"%@",[user_names lastObject]);
+            }
+            [_inboxTable reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
@@ -81,11 +106,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    recipes = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
-    
+    user_names = [NSMutableArray array];
+    user_ids = [NSMutableArray array];
     [self getConversations];
-
 }
 
 - (void)didReceiveMemoryWarning {

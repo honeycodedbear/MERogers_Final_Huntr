@@ -10,5 +10,6 @@
 #import "ProfileViewController.h"
 
 @interface InboxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property IBOutlet UITableView *inboxTable;
 -(IBAction)backToProfile:(id)sender;
 @end

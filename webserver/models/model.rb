@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   def self.getConversation(userA: nil, userB: nil)
     sent_messages = userA.sent_messages.where("receiving_user_id = ?",userB.id)
     recieved_messages = userA.recieved_messages.where("sending_user_id = ?",userB.id)
-    (sent_messages+recieved_messages).to_json
+    (sent_messages+recieved_messages).sort_by{|msg| msg.created_at}.to_json
   end
 
   def self.getInboxUsers(userA: nil)

@@ -8,6 +8,8 @@ gem 'thin'
 gem "tux"
 gem 'json'
 gem 'bcrypt'
+gem 'rmagick'
+gem 'httparty'
 
 group :development do
 	gem 'rerun'
