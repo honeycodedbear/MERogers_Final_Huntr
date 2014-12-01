@@ -92,12 +92,26 @@ end
 
 get '/get_image' do
   content_type 'image/png'
-  File.open("./public/profile_image_#{params[:user_id]}.png").read
+
+  begin
+    File.open("./public/profile_image_#{params[:user_id]}.png").read
+  rescue
+    File.open("./public/profile_image_-1.png").read
+  end
 end
 
 get '/get_image_thumb' do
   content_type 'image/png'
-  File.open("./public/profile_image_#{params[:user_id]}_thumb.png").read
+  begin
+    File.open("./public/profile_image_#{params[:user_id]}_thumb.png").read
+  rescue
+    File.open("./public/profile_image_-1_thumb.png").read
+  end
+end
+
+get '/get_user' do
+  content_type :json
+  User.find(params[:target_user_id]).to_json
 end
 
 post '/save_image' do
