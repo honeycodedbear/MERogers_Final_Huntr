@@ -14,28 +14,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" id="k8g-Kw-F68">
-                                <rect key="frame" x="16" y="75" width="350" height="30"/>
+                                <rect key="frame" x="16" y="78" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" id="pH8-xp-B39">
-                                <rect key="frame" x="16" y="123" width="350" height="30"/>
+                                <rect key="frame" x="16" y="116" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AWL-Ft-FWG">
-                                <rect key="frame" x="212" y="189" width="154" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="login:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZcD-XR-vEj"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rn2-86-Vgj">
                                 <rect key="frame" x="16" y="161" width="350" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -44,13 +34,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="k02-s8-Muz">
-                                <rect key="frame" x="16" y="189" width="188" height="30"/>
+                                <rect key="frame" x="16" y="189" width="134" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="signup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JpM-bj-cwi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AWL-Ft-FWG">
+                                <rect key="frame" x="158" y="189" width="154" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZcD-XR-vEj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153.59999999999999" y="272.63999999999999"/>
+            <point key="canvasLocation" x="153" y="272"/>
         </scene>
         <!--Inbox View Controller-->
         <scene sceneID="YLu-Ex-r5Z">
@@ -100,7 +100,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MSo-KO-FCe">
-                                                    <rect key="frame" x="8" y="8" width="330" height="182"/>
+                                                    <rect key="frame" x="8" y="8" width="617" height="281"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JkP-Q5-0oA">
@@ -147,8 +147,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="xb7-oA-bzU">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="6jz-xY-n66"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Delete" id="5C9-jf-41F"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="6jz-xY-n66">
+                                            <connections>
+                                                <action selector="goInbox:" destination="4MM-ZQ-wXa" id="2uh-WP-Ud3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Their Profile" id="5C9-jf-41F">
+                                            <connections>
+                                                <action selector="goToUserProfile:" destination="4MM-ZQ-wXa" id="2rt-RM-Z0Q"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -224,6 +232,7 @@
                     <connections>
                         <outlet property="messageField" destination="X5G-rm-l9d" id="8HF-ni-pP6"/>
                         <outlet property="messageTable" destination="cJy-g5-KeL" id="vwu-sW-CLg"/>
+                        <outlet property="navBar" destination="ovj-VJ-sfC" id="EIa-Dq-KsP"/>
                         <outlet property="sendBtn" destination="4hr-Mh-CXa" id="3Ng-sY-gxg"/>
                     </connections>
                 </viewController>
@@ -432,19 +441,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" id="cya-uJ-fWF">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="jMj-fs-OCD">
-                                        <barButtonItem key="leftBarButtonItem" title="Back to Profile" id="es4-B1-gVY">
-                                            <connections>
-                                                <action selector="backToProfile:" destination="TIW-pX-68Z" id="WyY-Qc-tAj"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ZT5-58-HDz">
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -505,20 +501,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pie-ww-SWN">
-                                <rect key="frame" x="152" y="518" width="152" height="30"/>
+                            <navigationBar contentMode="scaleToFill" id="cya-uJ-fWF">
+                                <rect key="frame" x="0.0" y="27" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Like">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SEC-le-BUq">
-                                <rect key="frame" x="3" y="518" width="152" height="30"/>
+                                <items>
+                                    <navigationItem id="jMj-fs-OCD">
+                                        <barButtonItem key="leftBarButtonItem" title="Back to Profile" id="es4-B1-gVY">
+                                            <connections>
+                                                <action selector="backToProfile:" destination="TIW-pX-68Z" id="WyY-Qc-tAj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Messages" id="BIj-mP-NeR">
+                                            <connections>
+                                                <action selector="goInbox:" destination="TIW-pX-68Z" id="sZ7-dh-sgk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like&gt;&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2yH-tr-KXP">
+                                <rect key="frame" x="166" y="527" width="138" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Dislike">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt;Dislike" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fus-xf-TJc">
+                                <rect key="frame" x="16" y="527" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

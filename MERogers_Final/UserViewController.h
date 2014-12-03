@@ -24,8 +24,9 @@
 @property IBOutlet UILabel *personalLabel;
 @property IBOutlet UILabel *employerLabel;
 @property IBOutlet UIImageView *profileImage;
-
+@property IBOutlet NSString *targetUserId;
 //swipedLeft
 //swipedRight
 -(IBAction)backToProfile:(id)sender;
+-(IBAction)goInbox:(id)sender;
 @end

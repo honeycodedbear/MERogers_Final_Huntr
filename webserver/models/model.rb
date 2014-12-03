@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
   end
 end
 
+class Match < ActiveRecord::Base
+end
+
 class Like < ActiveRecord::Base
   belongs_to :userA, class_name: 'User'
   belongs_to :userB, class_name: 'User'

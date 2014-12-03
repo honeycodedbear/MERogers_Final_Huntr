@@ -15,5 +15,8 @@
 @property IBOutlet UITableView *messageTable;
 @property IBOutlet UIButton *sendBtn;
 @property IBOutlet UITextField *messageField;
+@property IBOutlet UINavigationBar *navBar;
 -(IBAction)sendMessage:(id)sender;
+-(IBAction)backToInbox:(id)sender;
+-(IBAction)goToUserProfile:(id)sender;
 @end

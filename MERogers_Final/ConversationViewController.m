@@ -10,12 +10,29 @@
 #import "YouChatCell.h"
 #import "ThemChatCell.h"
 #import "AFNetworking/AFNetworking.h"
+#import "InboxViewController.h"
+#import "UserViewController.h"
 
 @interface ConversationViewController ()
 
 @end
 
 @implementation ConversationViewController
+
+//UINavistuff
+-(IBAction)goToUserProfile:(id)sender{
+    
+    NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
+    [preferences setInteger:_user_id forKey:@"target_user_id"];
+    
+    UserViewController *viewController = (UserViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"UserViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+-(IBAction)goInbox:(id)sender{
+    InboxViewController *viewController = (InboxViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"InboxViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 
 //Web stuff
 -(IBAction)sendMessage:(id)sender{
@@ -94,6 +111,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _messages = [NSMutableArray array];
+    //change title to other user's name
+    _navBar.topItem.title = _otherName;
     
     // Do any additional setup after loading the view.
     //NSLog(@"%d",_user_id);

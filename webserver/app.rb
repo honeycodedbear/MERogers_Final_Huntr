@@ -46,21 +46,31 @@ post '/send_message' do
 end
 
 post '/swipe' do
-  user_a = params[:user_a]
-  user_b = params[:user_b]
-  #create a like following for user_a to user_b
-  #if params[:direction] == 'right'
-  #then make it a like
-  #else make it a dislike
   content_type :json
-  { message: "Success" }.to_json
+  userA = User.find(params[:user_id])
+  userB = User.find(params[:target_id])
+  #create new like
+  Match.create userA_id: userA.id, userB_id: userB.id
+  #check if there is a match
+  doesAlikeB = !Match.where("userA_id =? AND userB_id = ?", userA.id, userB.id).empty?
+  doesBlikeA = !Match.where("userA_id =? AND userB_id = ?",userB.id, userA.id).empty?
+  if doesAlikeB && doesBlikeA
+
+    Message.create sending_user_id: userA.id, receiving_user_id: userB.id, data: "Hey! We are a MATCH!!"
+    #Code to do a push notification
+
+    return {message: "Success"}.to_json
+  else
+    return {message: "Failure"}.to_json
+  end
 end
 
 get '/random_user' do
   content_type :json
   puts params.inspect
   #{ message: "Failure" }.to_json
-  User.where("id != ?",params[:user_id]).sample(1).first.to_json
+  u = User.find(params[:user_id])
+  User.where("id != ? AND employer != ?",u.id, u.employer).sample(1).first.to_json
 end
 
 get '/user' do
