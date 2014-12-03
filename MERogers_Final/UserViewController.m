@@ -40,7 +40,7 @@
         [preferences setInteger:0 forKey:@"target_user_id"];
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://localhost:9292/get_user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://104.131.171.242/get_user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *json = (NSDictionary *) responseObject;
             
             NSLog(@"Message: %@", json);
@@ -90,7 +90,7 @@
             }
             if(![[json objectForKey:@"profile_img"] isKindOfClass:[NSNull class]]){
                 NSLog(@"RETRIEVE IMAGE");
-                NSString *urlString = [NSString stringWithFormat:@"http://localhost:9292/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
+                NSString *urlString = [NSString stringWithFormat:@"http://104.131.171.242/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
                 [_profileImage setImageWithURL:[NSURL URLWithString:urlString]];
             }
             
@@ -124,7 +124,7 @@
 
 -(void)getRandomUserData:(NSDictionary *)parameters{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://localhost:9292/random_user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://104.131.171.242/random_user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *json = (NSDictionary *) responseObject;
         
         NSLog(@"Message: %@", json);
@@ -189,7 +189,7 @@
     NSDictionary *parameters = @{@"user_id": current_user_id, @"approve": @"true", @"target_id": _targetUserId};
     NSLog(@"TARGET USER ID: %@",_targetUserId);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:@"http://localhost:9292/swipe" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://104.131.171.242/swipe" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *json = (NSDictionary *) responseObject;
         NSLog(@"Message: %@", json);
         if(![[json objectForKey:@"message"] isKindOfClass:[NSNull class]]){
@@ -218,7 +218,7 @@
     NSDictionary *parameters = @{@"user_id": current_user_id, @"approve": @"false", @"target_id": _targetUserId};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:@"http://localhost:9292/swipe" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://104.131.171.242/swipe" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *json = (NSDictionary *) responseObject;
         NSLog(@"Is it a Match?: %@", json);
         if(![[json objectForKey:@"message"] isKindOfClass:[NSNull class]]){

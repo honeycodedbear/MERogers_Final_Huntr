@@ -66,7 +66,7 @@
     NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSData *dataImage = UIImagePNGRepresentation(_profileImage.image);
-    [manager POST:@"http://localhost:9292/save_image" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:@"http://104.131.171.242/save_image" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFormData:dataImage name:@"image"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success: %@", responseObject);
@@ -94,7 +94,7 @@
         }
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue], @"dev_type": _typeField.text, @"name": _nameField.text, @"location": _locationField.text, @"blurb": _blurbView.text , @"skill1": _skill1Field.text, @"skill2": _skill2Field.text, @"skill3": _skill3Field.text, @"skill4": _skill4Field.text, @"skill5": _skill5Field.text, @"skill6": _skill6Field.text, @"github": _githubField.text, @"personal": _personalField.text, @"employer":  isEmployer};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager POST:@"http://localhost:9292/update_user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:@"http://104.131.171.242/update_user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *json = (NSDictionary *) responseObject;
             NSLog(@"Message: %@", json);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -118,7 +118,7 @@
         //move onto profile page
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://localhost:9292/user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://104.131.171.242/user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *json = (NSDictionary *) responseObject;
             NSLog(@"Message: %@", json);
             if(![[json objectForKey:@"location"] isKindOfClass:[NSNull class]]){
@@ -162,7 +162,7 @@
             }
             if(![[json objectForKey:@"profile_img"] isKindOfClass:[NSNull class]]){
                 NSLog(@"RETRIEVE IMAGE");
-                NSString *urlString = [NSString stringWithFormat:@"http://localhost:9292/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
+                NSString *urlString = [NSString stringWithFormat:@"http://104.131.171.242/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
                 [_profileImage setImageWithURL:[NSURL URLWithString:urlString]];
             }
             
