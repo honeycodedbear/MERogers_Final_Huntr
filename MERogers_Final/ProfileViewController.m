@@ -66,7 +66,7 @@
     NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSData *dataImage = UIImagePNGRepresentation(_profileImage.image);
-    [manager POST:@"http://104.131.171.242/save_image" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:@"http://104.236.200.152/save_image" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFormData:dataImage name:@"image"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success: %@", responseObject);
@@ -118,7 +118,7 @@
         //move onto profile page
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://104.131.171.242/user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://104.236.200.152/user" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *json = (NSDictionary *) responseObject;
             NSLog(@"Message: %@", json);
             if(![[json objectForKey:@"location"] isKindOfClass:[NSNull class]]){
@@ -162,7 +162,7 @@
             }
             if(![[json objectForKey:@"profile_img"] isKindOfClass:[NSNull class]]){
                 NSLog(@"RETRIEVE IMAGE");
-                NSString *urlString = [NSString stringWithFormat:@"http://104.131.171.242/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
+                NSString *urlString = [NSString stringWithFormat:@"http://104.236.200.152/get_image?user_id=%@", [json objectForKey:@"id"] ] ;
                 [_profileImage setImageWithURL:[NSURL URLWithString:urlString]];
             }
             

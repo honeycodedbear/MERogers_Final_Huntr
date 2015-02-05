@@ -44,7 +44,7 @@
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue], @"other_id": [NSNumber numberWithInt:(int)_user_id], @"data":_messageField.text};
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager POST:@"http://104.131.171.242/send_message" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:@"http://104.236.200.152/send_message" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             _messages = [NSMutableArray array];
             [self getConversation];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -63,7 +63,7 @@
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue], @"other_id": [NSNumber numberWithInt:(int)_user_id]};
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://104.131.171.242/conversation" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://104.236.200.152/conversation" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             //NSLog(@"Raw: %@", responseObject);
             [_messages addObjectsFromArray: (NSArray *) responseObject];
             //NSDictionary *json = (NSDictionary *) responseObject;

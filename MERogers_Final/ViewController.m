@@ -18,7 +18,7 @@
     
     NSDictionary *parameters = @{@"email": _email.text, @"password": _password.text};
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://104.131.171.242/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://104.236.200.152/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *json = (NSDictionary *) responseObject;
         NSLog(@"Message: %@", json[@"message"]);
         if([json[@"message"] isEqualToString:@"Success"]){
@@ -54,7 +54,7 @@
         
         NSDictionary *parameters = @{@"email": _email.text, @"password": _password.text};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://104.131.171.242/signup" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://104.236.200.152/signup" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *json = (NSDictionary *) responseObject;
             NSLog(@"Message: %@", json[@"message"]);
             if([json[@"message"] isEqualToString:@"Success"]){

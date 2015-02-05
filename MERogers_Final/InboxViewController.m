@@ -43,7 +43,7 @@
     }
     
     cell.textLabel.text = [user_names objectAtIndex:indexPath.row];
-    NSString *urlString = [NSString stringWithFormat:@"http://104.131.171.242/get_image?user_id=%@", [user_ids objectAtIndex:indexPath.row] ] ;
+    NSString *urlString = [NSString stringWithFormat:@"http://104.236.200.152/get_image?user_id=%@", [user_ids objectAtIndex:indexPath.row] ] ;
     
     [cell.imageView setImageWithURL:[NSURL URLWithString:urlString]];
     //cell.imageView.image = [UIImage imageNamed:@"creme_brelee.jpg"];
@@ -81,7 +81,7 @@
         //move onto profile page
         NSDictionary *parameters = @{@"user_id": [[preferences objectForKey:loggedInUserIdKey] stringValue]};
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://104.131.171.242/inbox_users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:@"http://104.236.200.152/inbox_users" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             //NSLog(@"Raw: %@", responseObject);
            // NSDictionary *json = (NSDictionary *) responseObject;
            // NSLog(@"Json: %@", json);
